@@ -1,3 +1,9 @@
+/*
+    William Ding
+    CS 446 - Assignment 1
+    Client.java
+*/
+
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
@@ -14,41 +20,41 @@ public class Client {
         DataInputStream in = null;
         
         try {
-            // Get user input
+            // get user input
             scanner = new Scanner(System.in);
             System.out.print("Enter an integer between 1 and 100: ");
             int clientNumber = scanner.nextInt();
             
-            // Connect to server
+            // connect to server
             socket = new Socket(SERVER_HOST, SERVER_PORT);
             System.out.println("Connected to server at " + SERVER_HOST + ":" + SERVER_PORT);
             
-            // Set up data streams
+            // data streams
             out = new DataOutputStream(socket.getOutputStream());
             in = new DataInputStream(socket.getInputStream());
             
-            // Send data to server
+            // send data to server
             out.writeUTF(CLIENT_NAME);
             out.writeInt(clientNumber);
             
-            // Receive response from server
+            // receive response from server
             String serverName = in.readUTF();
             int serverNumber = in.readInt();
             
-            // Display information
+            // display information
             System.out.println("Client name: " + CLIENT_NAME);
             System.out.println("Server name: " + serverName);
             System.out.println("Client's number: " + clientNumber);
             System.out.println("Server's number: " + serverNumber);
             
-            // Calculate and display sum
+            // calculate and display sum
             int sum = clientNumber + serverNumber;
             System.out.println("Sum: " + sum);
             
         } catch (IOException e) {
             System.out.println("Client error: " + e.getMessage());
         } finally {
-            // Close resources
+            // close resources
             try {
                 if (in != null) in.close();
                 if (out != null) out.close();
