@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Client {
     private static final String SERVER_HOST = "localhost";
-    private static final int SERVER_PORT = 8888;
-    private static final String CLIENT_NAME = "Client of Jane Doe";
+    private static final int SERVER_PORT = 5001;
+    private static final String CLIENT_NAME = "William Ding Client";
 
     public static void main(String[] args) {
         Scanner scanner = null;
